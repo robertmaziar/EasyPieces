@@ -1,4 +1,5 @@
 ﻿using EasyPieces.Builders;
+using EasyPieces.TestConsole.Builders;
 
 namespace EasyPieces.TestConsole
 {
@@ -22,6 +23,22 @@ namespace EasyPieces.TestConsole
                 .Build();
 
             Console.WriteLine(jsonObject.ToString());
+
+            var smsReplacements = new Dictionary<string, string>
+            {
+                { "Name", "Joe" },
+                { "Sender", "Jack Doe" }
+            };
+
+            var smsMessage = new SmsMessageBuilder()
+                .WithMessage("Hi {Name}, this is an SMS from {Sender}.")
+                .WithReplacement("Name", "John")
+                .WithReplacement("Sender", "Jane Doe")
+                .WithReplacements(smsReplacements)
+                .Build();
+
+            Console.WriteLine("\nSMS Message:");
+            Console.WriteLine(smsMessage);
         }
     }
 }
