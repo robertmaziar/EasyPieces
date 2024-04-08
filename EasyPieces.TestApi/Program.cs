@@ -1,5 +1,5 @@
-
 using EasyPieces.Middleware;
+using EasyPieces.Services.Interfaces;
 
 namespace EasyPieces.TestApi
 {
@@ -16,6 +16,8 @@ namespace EasyPieces.TestApi
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddScoped<IEasyAccessControlService, TestAccessControlService>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -28,7 +30,6 @@ namespace EasyPieces.TestApi
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

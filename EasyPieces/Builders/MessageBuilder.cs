@@ -39,7 +39,7 @@
         {
             foreach (var replacement in _replacements)
             {
-                _message  = _message.Replace($"{{{replacement.Key}}}", replacement.Value);
+                _message = _message.Replace($"{{{replacement.Key}}}", replacement.Value);
             }
 
             return _message;

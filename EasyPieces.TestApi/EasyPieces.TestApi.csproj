@@ -11,8 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EasyPieces.Attributes\EasyPieces.Attributes.csproj" />
-    <ProjectReference Include="..\EasyPieces.Middleware\EasyPieces.Middleware.csproj" />
+    <ProjectReference Include="..\EasyPieces\EasyPieces.csproj" />
   </ItemGroup>
 
 </Project>
