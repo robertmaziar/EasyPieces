@@ -1,9 +1,11 @@
+using EasyPieces.Attributes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EasyPieces.TestApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [EasyAccess("Weather")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
