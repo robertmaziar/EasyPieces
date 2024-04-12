@@ -4,13 +4,10 @@ namespace EasyPieces.TestApi
 {
     public class TestAccessControlService : IEasyAccessControlService
     {
-        public bool HasEasyAccess(List<string> allowedAccessors, int? userId = null)
+        public bool HasEasyAccess(List<string> allowedAccessors, string userId)
         {
-            return true;
-        }
+            // Your logic goes here...
 
-        public bool HasEasyAccess(List<string> allowedAccessors, string? userId = null)
-        {
             return true;
         }
     }

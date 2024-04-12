@@ -1,4 +1,5 @@
 using EasyPieces.Attributes;
+using EasyPieces.Builders;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EasyPieces.TestApi.Controllers
@@ -30,6 +31,30 @@ namespace EasyPieces.TestApi.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [HttpGet("TestWorkflow")]
+        public async Task<IActionResult> TestWorkflowAsync()
+        {
+            try
+            {
+                List<WorkflowTask> workflow = new WorkflowBuilder()
+                .WithTask(new WorkflowTask("Process Method", WeatherForecast.Process))
+                .WithTask(new WorkflowTask("Process async Method", WeatherForecast.ProcessAsync))
+                .Build();
+
+                var result = await workflow.ExecuteAsync();
+                if (result.IsCompletedSuccessfully)
+                    return Ok(result);
+                else
+                    return BadRequest(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+
+                throw;
+            }
         }
     }
 }
