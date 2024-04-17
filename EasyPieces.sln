@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyPieces.TestApi", "EasyP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyPieces", "EasyPieces\EasyPieces.csproj", "{55562010-1205-4F06-AAEB-923586397C71}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPieces.Tests", "EasyPieces.Tests\EasyPieces.Tests.csproj", "{0776B7A1-471C-46BE-A8F0-2ACA324CE21A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{55562010-1205-4F06-AAEB-923586397C71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55562010-1205-4F06-AAEB-923586397C71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55562010-1205-4F06-AAEB-923586397C71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0776B7A1-471C-46BE-A8F0-2ACA324CE21A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0776B7A1-471C-46BE-A8F0-2ACA324CE21A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0776B7A1-471C-46BE-A8F0-2ACA324CE21A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0776B7A1-471C-46BE-A8F0-2ACA324CE21A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
