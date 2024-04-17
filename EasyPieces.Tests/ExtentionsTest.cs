@@ -60,10 +60,14 @@ namespace EasyPieces.Tests
         [TestMethod]
         public void CopyPropertiesTo()
         {
-            Person person1 = new Person();
-            Person person2 = new Person();
+            Person person1 = new Person("John", "", "Doe");
+            Person person2 = new Person("Jane", "", "");
 
-            // Test the copy method
+            person1.CopyPropertiesTo(person2, ["FirstName"]);
+
+            Assert.AreNotEqual(person1.FirstName, person2.FirstName);
+            Assert.AreEqual(person1.MiddleName, person2.MiddleName);
+            Assert.AreEqual(person1.LastName, person2.LastName);
         }
     }
 }
