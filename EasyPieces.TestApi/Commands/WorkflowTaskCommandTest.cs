@@ -15,12 +15,8 @@ namespace EasyPieces.TestApi.Commands
 
         public async Task ExecuteAsync()
         {
-            Console.WriteLine("Executing...");
-
             // Simulating asynchronous operation
             await Task.Delay(Parameters == null ? 1000 : Parameters.MillisecondsDelay);
-
-            Console.WriteLine("Executed successfully.");
         }
     }
 }

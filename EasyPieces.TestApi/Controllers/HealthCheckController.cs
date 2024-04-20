@@ -7,6 +7,7 @@ namespace EasyPieces.TestApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EasyAccess("HealthCheck")]
     public class HealthCheckController : ControllerBase
     {
         // GET: api/<HealthCheckController>
