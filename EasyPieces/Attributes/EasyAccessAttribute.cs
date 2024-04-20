@@ -29,14 +29,21 @@ namespace EasyPieces.Attributes
         public void OnAuthorization(AuthorizationFilterContext context)
         {
             string? userId = context.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
-            var accessControlService = context.HttpContext.RequestServices.GetService(typeof(IEasyAccessControlService)) as IEasyAccessControlService;
-            var hasAccess = accessControlService.HasEasyAccess(_allowedAccessors, userId);
-
-            if (!hasAccess)
+            
+            IEasyAccessControlService? accessControlService = context.HttpContext.RequestServices
+                .GetService(typeof(IEasyAccessControlService)) as IEasyAccessControlService;
+            
+            if (!string.IsNullOrWhiteSpace(userId) && accessControlService != null)
             {
-                context.Result = new ForbidResult(); // Or any other appropriate action result
+                var hasAccess = accessControlService.HasEasyAccess(_allowedAccessors, userId);
+
+                if (!hasAccess)
+                {
+                    context.Result = new ForbidResult();
+                }
             }
+            
+            // TODO: Test what happens when service or userId is null
         }
     }
 }
