@@ -14,7 +14,7 @@ namespace EasyPieces.Builders
             Command = command;
         }
 
-        public async Task RunAsync(ILogger logger)
+        public async Task RunAsync(ILogger? logger)
         {
             try
             {
