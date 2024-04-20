@@ -1,39 +1,37 @@
 ﻿using EasyPieces.Builders.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace EasyPieces.Builders
 {
-    /// <summary>
-    /// Incomplete implementation
-    /// </summary>
     public class WorkflowBuilder
     {
+        private ILogger? _logger; 
         private List<WorkflowTask> _tasks;
 
         public WorkflowBuilder() 
         {
             _tasks = new List<WorkflowTask>();    
-        }    
+        }
 
-        public WorkflowBuilder WithTask(WorkflowTask task)
+        public WorkflowBuilder WithLogger(ILogger logger)
         {
-            _tasks.Add(task);
+            _logger = logger;
 
             return this;
         }
 
-        public List<WorkflowTask> Build()
+        public WorkflowBuilder WithTask(string name, IWorkflowTaskCommand command)
         {
-            return _tasks;
+            _tasks.Add(new WorkflowTask(name, command));
+            
+            return this;
         }
-    }
 
-    public static class WorkflowTaskListExtensions
-    {
-        public static async Task<Task> ExecuteAsync(this List<WorkflowTask> tasks)
+        public async Task<Task> RunAsync()
         {
-            foreach (IWorkflowTask task in tasks)
+            foreach (var task in _tasks)
             {
-                await task.Execute();
+                await task.RunAsync(_logger);
             }
 
             return Task.CompletedTask;
